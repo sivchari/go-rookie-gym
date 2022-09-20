@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:8.0
+    platform: linux/x86_64
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: sample
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d # コンテナ作成時に走るシェルスクリプト指定
+    ports:
+      - "3306:3306"
